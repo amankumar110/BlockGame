@@ -63,6 +63,11 @@ function checkLose() {
       body.getBoundingClientRect().height - block.getBoundingClientRect().width ||
     block.getBoundingClientRect().left >=
       body.getBoundingClientRect().width - block.getBoundingClientRect().width ||
+
+      body.getBoundingClientRect().height - 100 ||
+    block.getBoundingClientRect().left >=
+      body.getBoundingClientRect().width - 100 ||
+>>>>>>> 50a242886111b162e3490ed0fd6dff2bcb3d6243
     block.getBoundingClientRect().left <= 5
   ) {
     // When block reaches any side
