@@ -14,7 +14,6 @@ const gameStart = () => {
   body.style.backgroundColor = `${getRandColor()}`;
 };
 
-
 // Window events
 // Event fires when window is loaded
 window.addEventListener("DOMContentLoaded", gameStart);
@@ -39,16 +38,18 @@ window.addEventListener("keydown", (ev) => {
       block.getBoundingClientRect().left + block.getBoundingClientRect().height
     }px`;
   }
-// Setting random colors on body and block as block moves
+  // Setting random colors on body and block as block moves
   block.style.backgroundColor = `${getRandColor()}`;
   body.style.backgroundColor = `${getRandColor()}`;
 
   // increasing dimensions o the block
-  block.style.width = `${block.getBoundingClientRect().width + 2}px`;
-  block.style.height = `${block.getBoundingClientRect().height + 2}px`;
- 
-  checkLose();
+  block.style.width = `${block.getBoundingClientRect().width + 3}px`;
+  block.style.height = `${block.getBoundingClientRect().height +3}px`;
+
 });
+window.addEventListener("keyup",checkLose);
+
+
 
 // Updates the seconds taken every seconds
 setInterval(() => {
@@ -59,23 +60,19 @@ setInterval(() => {
 function checkLose() {
   if (
     block.getBoundingClientRect().top <= 5 ||
-    block.getBoundingClientRect().top >=
-      body.getBoundingClientRect().height - block.getBoundingClientRect().width ||
-    block.getBoundingClientRect().left >=
-      body.getBoundingClientRect().width - block.getBoundingClientRect().width ||
-
-      body.getBoundingClientRect().height - 100 ||
-    block.getBoundingClientRect().left >=
-      body.getBoundingClientRect().width - 100 ||
->>>>>>> 50a242886111b162e3490ed0fd6dff2bcb3d6243
+    block.getBoundingClientRect().top >= body.getBoundingClientRect().height - block.getBoundingClientRect().height ||
+    block.getBoundingClientRect().left >= body.getBoundingClientRect().width - block.getBoundingClientRect().width ||
     block.getBoundingClientRect().left <= 5
   ) {
     // When block reaches any side
     body.innerHTML = `<h1 class = "result-heading">you lasted ${seconds} seconds</h1>`;
-    history.go(0);
+    const replay = confirm("Will you play another round?");
+    if (replay) {
+      history.go(0);
+    }
+    
   }
 }
-
 
 // The function for getting random color
 function getRandColor() {
