@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", gameStart);
 
 // Key event
 window.addEventListener("keydown", (ev) => {
+  checkLose();
   // Moving block on keydown
   if (ev.code === "ArrowUp") {
     block.style.top = `${
@@ -60,8 +61,10 @@ setInterval(() => {
 function checkLose() {
   if (
     block.getBoundingClientRect().top <= 5 ||
-    block.getBoundingClientRect().top >= body.getBoundingClientRect().height - block.getBoundingClientRect().height ||
-    block.getBoundingClientRect().left >= body.getBoundingClientRect().width - block.getBoundingClientRect().width ||
+    block.getBoundingClientRect().top >=
+      body.getBoundingClientRect().height - block.getBoundingClientRect().width ||
+    block.getBoundingClientRect().left >=
+      body.getBoundingClientRect().width - block.getBoundingClientRect().width ||
     block.getBoundingClientRect().left <= 5
   ) {
     // When block reaches any side
