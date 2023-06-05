@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", gameStart);
 
 // Key event
 window.addEventListener("keydown", (ev) => {
+//   Checking block position
   checkLose();
   // Moving block on keydown
   if (ev.code === "ArrowUp") {
